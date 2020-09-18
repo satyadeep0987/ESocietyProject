@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8579527c659428180201d83c44c85a6" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="ESocietyProjectModel.Additional_Facility_Details" Width="1.5" PointX="1.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.AdminRegistration" Width="1.5" PointX="1.125" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.Function_Category" Width="1.5" PointX="15.375" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.Function_Details" Width="1.5" PointX="15" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.Guard_Duty" Width="1.5" PointX="10.875" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.House" Width="1.5" PointX="10.875" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.Nearby_Services" Width="1.5" PointX="23.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.Nearby_Services_Category" Width="1.5" PointX="20.375" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.OwnerRegistration" Width="1.5" PointX="10.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.Parking_Details" Width="1.5" PointX="10.875" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.ServiceCategory" Width="1.5" PointX="20.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.Society" Width="1.5" PointX="8.125" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESocietyProjectModel.User_Service_Details" Width="1.5" PointX="23.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__Function___Funct__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__Function___Owner__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__Guard_Dut__House__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__Parking_D__Visit__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__OwnerRegi__House__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__Nearby_Se__Nearb__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__OwnerRegi__Socie__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="ESocietyProjectModel.FK__User_Serv__Servi__2D27B809" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

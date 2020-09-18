@@ -10,7 +10,7 @@ namespace ESocietyProject
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            config.EnableCors();
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -19,6 +19,10 @@ namespace ESocietyProject
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
