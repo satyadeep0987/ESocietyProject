@@ -10,7 +10,7 @@ namespace IDatabase
     public interface IAdditionalFacilityDetails
     {
         IEnumerable<AdditionalFacilityDetails> GetAdditionalFacilityDetails();
-        AdditionalFacilityDetails GetAdditionalFacilityDetails(int id);
+        AdditionalFacilityDetails GetByIdAdditionalFacilityDetails(int id);
         bool PostAdditionalFacilityDetails(AdditionalFacilityDetails d);
         string PutAdditionalFacilityDetails(AdditionalFacilityDetails d, int id);
     }
