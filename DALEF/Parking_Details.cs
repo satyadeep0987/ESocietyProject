@@ -19,7 +19,6 @@ namespace DALEF
         public Nullable<int> Visitor_ID { get; set; }
         public string Slot_Id { get; set; }
     
-        public virtual EngagedSlot EngagedSlot { get; set; }
         public virtual Guard_Duty Guard_Duty { get; set; }
     }
 }

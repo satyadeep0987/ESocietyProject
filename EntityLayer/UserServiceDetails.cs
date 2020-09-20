@@ -9,7 +9,7 @@ namespace EntityLayer
     public class UserServiceDetails
     {
         public int User_Id { get; set; }
-        public int Service_Category_ID { get; set; }
+        public int? Service_Category_ID { get; set; }
         public string User_Name { get; set; }
         public string User_Address { get; set; }
         public long User_Contact { get; set; }

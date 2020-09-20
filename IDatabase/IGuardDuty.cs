@@ -12,6 +12,6 @@ namespace IDatabase
         IEnumerable<GuardDuty> GetGuardDuty();
         GuardDuty GetByIdVistor(int id);
         bool PostGuardDuty(GuardDuty g);
-        int PutGuardDuty(int id, GuardDuty g);
+        string PutGuardDuty(int id, GuardDuty g);
     }
 }

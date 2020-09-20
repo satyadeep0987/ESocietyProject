@@ -12,16 +12,19 @@ namespace DALEF
     using System;
     using System.Collections.Generic;
     
-    public partial class ServiceCategory
+    public partial class House_Details
     {
-        public ServiceCategory()
+        public House_Details()
         {
-            this.User_Service_Details = new HashSet<User_Service_Details>();
+            this.Guard_Duty = new HashSet<Guard_Duty>();
+            this.Owner_Registration = new HashSet<Owner_Registration>();
         }
     
-        public int Service_Category_ID { get; set; }
-        public string Service_Category { get; set; }
+        public string House_ID { get; set; }
+        public int House_Size_BHK { get; set; }
+        public string House_Type { get; set; }
     
-        public virtual ICollection<User_Service_Details> User_Service_Details { get; set; }
+        public virtual ICollection<Guard_Duty> Guard_Duty { get; set; }
+        public virtual ICollection<Owner_Registration> Owner_Registration { get; set; }
     }
 }

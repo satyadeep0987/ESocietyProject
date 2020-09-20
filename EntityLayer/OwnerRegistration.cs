@@ -17,7 +17,7 @@ namespace EntityLayer
         public string Owner_FirstName { get; set; }
         public string Owner_Lastname { get; set; }
         public string Owner_IDPROOF { get; set; }
-        public int Owner_Contact { get; set; }
+        public long Owner_Contact { get; set; }
         public string Owner_Occupation { get; set; }
         public int Owner_NumberOfFamily { get; set; }
     }

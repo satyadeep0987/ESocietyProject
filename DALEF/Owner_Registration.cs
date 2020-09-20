@@ -12,9 +12,9 @@ namespace DALEF
     using System;
     using System.Collections.Generic;
     
-    public partial class OwnerRegistration
+    public partial class Owner_Registration
     {
-        public OwnerRegistration()
+        public Owner_Registration()
         {
             this.Function_Details = new HashSet<Function_Details>();
         }
@@ -33,7 +33,7 @@ namespace DALEF
         public Nullable<int> Owner_NumberOfFamily { get; set; }
     
         public virtual ICollection<Function_Details> Function_Details { get; set; }
-        public virtual House House { get; set; }
-        public virtual Society Society { get; set; }
+        public virtual House_Details House_Details { get; set; }
+        public virtual Society_Details Society_Details { get; set; }
     }
 }

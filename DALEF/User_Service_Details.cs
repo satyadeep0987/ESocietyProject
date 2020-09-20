@@ -22,6 +22,6 @@ namespace DALEF
         public string User_Availavility { get; set; }
         public long User_Rate { get; set; }
     
-        public virtual ServiceCategory ServiceCategory { get; set; }
+        public virtual Service_Category Service_Category { get; set; }
     }
 }

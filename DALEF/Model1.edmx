@@ -24,13 +24,13 @@
           <Property Name="Admin_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Admin_Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="AvailableSlots">
+        <EntityType Name="Available_Slots">
           <Key>
             <PropertyRef Name="Slot_ID" />
           </Key>
           <Property Name="Slot_ID" Type="varchar" MaxLength="5" Nullable="false" />
         </EntityType>
-        <EntityType Name="EngagedSlots">
+        <EntityType Name="Engaged_Slots">
           <Key>
             <PropertyRef Name="Slot_ID" />
           </Key>
@@ -68,7 +68,7 @@
           <Property Name="House_ID" Type="varchar" MaxLength="10" />
           <Property Name="Require" Type="int" />
         </EntityType>
-        <EntityType Name="House">
+        <EntityType Name="House_Details">
           <Key>
             <PropertyRef Name="House_ID" />
           </Key>
@@ -95,7 +95,7 @@
           <Property Name="Nearby_Services_Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nearby_Services_Category" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="OwnerRegistration">
+        <EntityType Name="Owner_Registration">
           <Key>
             <PropertyRef Name="Owner_ID" />
           </Key>
@@ -121,14 +121,14 @@
           <Property Name="Visitor_ID" Type="int" />
           <Property Name="Slot_Id" Type="varchar" MaxLength="5" />
         </EntityType>
-        <EntityType Name="ServiceCategory">
+        <EntityType Name="Service_Category">
           <Key>
             <PropertyRef Name="Service_Category_ID" />
           </Key>
           <Property Name="Service_Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Service_Category" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Society">
+        <EntityType Name="Society_Details">
           <Key>
             <PropertyRef Name="Society_ID" />
           </Key>
@@ -150,7 +150,7 @@
           <Property Name="User_Availavility" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="User_Rate" Type="bigint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Function___Funct__3F466844">
+        <Association Name="FK__Function___Funct__4E88ABD4">
           <End Role="Function_Category" Type="Self.Function_Category" Multiplicity="0..1" />
           <End Role="Function_Details" Type="Self.Function_Details" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,11 +162,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Function___Owner__403A8C7D">
-          <End Role="OwnerRegistration" Type="Self.OwnerRegistration" Multiplicity="0..1" />
+        <Association Name="FK__Function___Owner__4F7CD00D">
+          <End Role="Owner_Registration" Type="Self.Owner_Registration" Multiplicity="0..1" />
           <End Role="Function_Details" Type="Self.Function_Details" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="OwnerRegistration">
+            <Principal Role="Owner_Registration">
               <PropertyRef Name="Owner_ID" />
             </Principal>
             <Dependent Role="Function_Details">
@@ -174,11 +174,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Guard_Dut__House__34C8D9D1">
-          <End Role="House" Type="Self.House" Multiplicity="0..1" />
+        <Association Name="FK__Guard_Dut__House__38996AB5">
+          <End Role="House_Details" Type="Self.House_Details" Multiplicity="0..1" />
           <End Role="Guard_Duty" Type="Self.Guard_Duty" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="House">
+            <Principal Role="House_Details">
               <PropertyRef Name="House_ID" />
             </Principal>
             <Dependent Role="Guard_Duty">
@@ -186,7 +186,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nearby_Se__Nearb__31EC6D26">
+        <Association Name="FK__Nearby_Se__Nearb__35BCFE0A">
           <End Role="Nearby_Services_Category" Type="Self.Nearby_Services_Category" Multiplicity="0..1" />
           <End Role="Nearby_Services" Type="Self.Nearby_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -198,43 +198,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OwnerRegi__House__276EDEB3">
-          <End Role="House" Type="Self.House" Multiplicity="0..1" />
-          <End Role="OwnerRegistration" Type="Self.OwnerRegistration" Multiplicity="*" />
+        <Association Name="FK__Owner_Reg__House__276EDEB3">
+          <End Role="House_Details" Type="Self.House_Details" Multiplicity="0..1" />
+          <End Role="Owner_Registration" Type="Self.Owner_Registration" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="House">
+            <Principal Role="House_Details">
               <PropertyRef Name="House_ID" />
             </Principal>
-            <Dependent Role="OwnerRegistration">
+            <Dependent Role="Owner_Registration">
               <PropertyRef Name="House_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OwnerRegi__Socie__286302EC">
-          <End Role="Society" Type="Self.Society" Multiplicity="0..1" />
-          <End Role="OwnerRegistration" Type="Self.OwnerRegistration" Multiplicity="*" />
+        <Association Name="FK__Owner_Reg__Socie__286302EC">
+          <End Role="Society_Details" Type="Self.Society_Details" Multiplicity="0..1" />
+          <End Role="Owner_Registration" Type="Self.Owner_Registration" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Society">
+            <Principal Role="Society_Details">
               <PropertyRef Name="Society_ID" />
             </Principal>
-            <Dependent Role="OwnerRegistration">
+            <Dependent Role="Owner_Registration">
               <PropertyRef Name="Society_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Parking_D__Slot___5441852A">
-          <End Role="EngagedSlots" Type="Self.EngagedSlots" Multiplicity="0..1" />
-          <End Role="Parking_Details" Type="Self.Parking_Details" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EngagedSlots">
-              <PropertyRef Name="Slot_ID" />
-            </Principal>
-            <Dependent Role="Parking_Details">
-              <PropertyRef Name="Slot_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Parking_D__Visit__534D60F1">
+        <Association Name="FK__Parking_D__Visit__4316F928">
           <End Role="Guard_Duty" Type="Self.Guard_Duty" Multiplicity="0..1" />
           <End Role="Parking_Details" Type="Self.Parking_Details" Multiplicity="*" />
           <ReferentialConstraint>
@@ -246,11 +234,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User_Serv__Servi__2D27B809">
-          <End Role="ServiceCategory" Type="Self.ServiceCategory" Multiplicity="0..1" />
+        <Association Name="FK__User_Serv__Servi__300424B4">
+          <End Role="Service_Category" Type="Self.Service_Category" Multiplicity="0..1" />
           <End Role="User_Service_Details" Type="Self.User_Service_Details" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ServiceCategory">
+            <Principal Role="Service_Category">
               <PropertyRef Name="Service_Category_ID" />
             </Principal>
             <Dependent Role="User_Service_Details">
@@ -261,53 +249,49 @@
         <EntityContainer Name="ESocietyProjectModelStoreContainer">
           <EntitySet Name="Additional_Facility_Details" EntityType="Self.Additional_Facility_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdminRegistration" EntityType="Self.AdminRegistration" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AvailableSlots" EntityType="Self.AvailableSlots" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EngagedSlots" EntityType="Self.EngagedSlots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Available_Slots" EntityType="Self.Available_Slots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engaged_Slots" EntityType="Self.Engaged_Slots" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Function_Category" EntityType="Self.Function_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Function_Details" EntityType="Self.Function_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Guard_Duty" EntityType="Self.Guard_Duty" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="House" EntityType="Self.House" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="House_Details" EntityType="Self.House_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nearby_Services" EntityType="Self.Nearby_Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nearby_Services_Category" EntityType="Self.Nearby_Services_Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OwnerRegistration" EntityType="Self.OwnerRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Owner_Registration" EntityType="Self.Owner_Registration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parking_Details" EntityType="Self.Parking_Details" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ServiceCategory" EntityType="Self.ServiceCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Society" EntityType="Self.Society" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service_Category" EntityType="Self.Service_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Society_Details" EntityType="Self.Society_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_Service_Details" EntityType="Self.User_Service_Details" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Function___Funct__3F466844" Association="Self.FK__Function___Funct__3F466844">
+          <AssociationSet Name="FK__Function___Funct__4E88ABD4" Association="Self.FK__Function___Funct__4E88ABD4">
             <End Role="Function_Category" EntitySet="Function_Category" />
             <End Role="Function_Details" EntitySet="Function_Details" />
           </AssociationSet>
-          <AssociationSet Name="FK__Function___Owner__403A8C7D" Association="Self.FK__Function___Owner__403A8C7D">
-            <End Role="OwnerRegistration" EntitySet="OwnerRegistration" />
+          <AssociationSet Name="FK__Function___Owner__4F7CD00D" Association="Self.FK__Function___Owner__4F7CD00D">
+            <End Role="Owner_Registration" EntitySet="Owner_Registration" />
             <End Role="Function_Details" EntitySet="Function_Details" />
           </AssociationSet>
-          <AssociationSet Name="FK__Guard_Dut__House__34C8D9D1" Association="Self.FK__Guard_Dut__House__34C8D9D1">
-            <End Role="House" EntitySet="House" />
+          <AssociationSet Name="FK__Guard_Dut__House__38996AB5" Association="Self.FK__Guard_Dut__House__38996AB5">
+            <End Role="House_Details" EntitySet="House_Details" />
             <End Role="Guard_Duty" EntitySet="Guard_Duty" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nearby_Se__Nearb__31EC6D26" Association="Self.FK__Nearby_Se__Nearb__31EC6D26">
+          <AssociationSet Name="FK__Nearby_Se__Nearb__35BCFE0A" Association="Self.FK__Nearby_Se__Nearb__35BCFE0A">
             <End Role="Nearby_Services_Category" EntitySet="Nearby_Services_Category" />
             <End Role="Nearby_Services" EntitySet="Nearby_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__OwnerRegi__House__276EDEB3" Association="Self.FK__OwnerRegi__House__276EDEB3">
-            <End Role="House" EntitySet="House" />
-            <End Role="OwnerRegistration" EntitySet="OwnerRegistration" />
+          <AssociationSet Name="FK__Owner_Reg__House__276EDEB3" Association="Self.FK__Owner_Reg__House__276EDEB3">
+            <End Role="House_Details" EntitySet="House_Details" />
+            <End Role="Owner_Registration" EntitySet="Owner_Registration" />
           </AssociationSet>
-          <AssociationSet Name="FK__OwnerRegi__Socie__286302EC" Association="Self.FK__OwnerRegi__Socie__286302EC">
-            <End Role="Society" EntitySet="Society" />
-            <End Role="OwnerRegistration" EntitySet="OwnerRegistration" />
+          <AssociationSet Name="FK__Owner_Reg__Socie__286302EC" Association="Self.FK__Owner_Reg__Socie__286302EC">
+            <End Role="Society_Details" EntitySet="Society_Details" />
+            <End Role="Owner_Registration" EntitySet="Owner_Registration" />
           </AssociationSet>
-          <AssociationSet Name="FK__Parking_D__Slot___5441852A" Association="Self.FK__Parking_D__Slot___5441852A">
-            <End Role="EngagedSlots" EntitySet="EngagedSlots" />
-            <End Role="Parking_Details" EntitySet="Parking_Details" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Parking_D__Visit__534D60F1" Association="Self.FK__Parking_D__Visit__534D60F1">
+          <AssociationSet Name="FK__Parking_D__Visit__4316F928" Association="Self.FK__Parking_D__Visit__4316F928">
             <End Role="Guard_Duty" EntitySet="Guard_Duty" />
             <End Role="Parking_Details" EntitySet="Parking_Details" />
           </AssociationSet>
-          <AssociationSet Name="FK__User_Serv__Servi__2D27B809" Association="Self.FK__User_Serv__Servi__2D27B809">
-            <End Role="ServiceCategory" EntitySet="ServiceCategory" />
+          <AssociationSet Name="FK__User_Serv__Servi__300424B4" Association="Self.FK__User_Serv__Servi__300424B4">
+            <End Role="Service_Category" EntitySet="Service_Category" />
             <End Role="User_Service_Details" EntitySet="User_Service_Details" />
           </AssociationSet>
         </EntityContainer>
@@ -335,18 +319,17 @@
           <Property Name="Admin_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Admin_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="AvailableSlot">
+        <EntityType Name="Available_Slots">
           <Key>
             <PropertyRef Name="Slot_ID" />
           </Key>
           <Property Name="Slot_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="EngagedSlot">
+        <EntityType Name="Engaged_Slots">
           <Key>
             <PropertyRef Name="Slot_ID" />
           </Key>
           <Property Name="Slot_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Parking_Details" Relationship="Self.FK__Parking_D__Slot___5441852A" FromRole="EngagedSlots" ToRole="Parking_Details" />
         </EntityType>
         <EntityType Name="Function_Category">
           <Key>
@@ -354,7 +337,7 @@
           </Key>
           <Property Name="Function_Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Function_Category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Function_Details" Relationship="Self.FK__Function___Funct__3F466844" FromRole="Function_Category" ToRole="Function_Details" />
+          <NavigationProperty Name="Function_Details" Relationship="Self.FK__Function___Funct__4E88ABD4" FromRole="Function_Category" ToRole="Function_Details" />
         </EntityType>
         <EntityType Name="Function_Details">
           <Key>
@@ -368,8 +351,8 @@
           <Property Name="Function_Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Function_Details1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Function_Status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Function_Category" Relationship="Self.FK__Function___Funct__3F466844" FromRole="Function_Details" ToRole="Function_Category" />
-          <NavigationProperty Name="OwnerRegistration" Relationship="Self.FK__Function___Owner__403A8C7D" FromRole="Function_Details" ToRole="OwnerRegistration" />
+          <NavigationProperty Name="Function_Category" Relationship="Self.FK__Function___Funct__4E88ABD4" FromRole="Function_Details" ToRole="Function_Category" />
+          <NavigationProperty Name="Owner_Registration" Relationship="Self.FK__Function___Owner__4F7CD00D" FromRole="Function_Details" ToRole="Owner_Registration" />
         </EntityType>
         <EntityType Name="Guard_Duty">
           <Key>
@@ -382,18 +365,18 @@
           <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="House_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Require" Type="Int32" />
-          <NavigationProperty Name="House" Relationship="Self.FK__Guard_Dut__House__34C8D9D1" FromRole="Guard_Duty" ToRole="House" />
-          <NavigationProperty Name="Parking_Details" Relationship="Self.FK__Parking_D__Visit__534D60F1" FromRole="Guard_Duty" ToRole="Parking_Details" />
+          <NavigationProperty Name="House_Details" Relationship="Self.FK__Guard_Dut__House__38996AB5" FromRole="Guard_Duty" ToRole="House_Details" />
+          <NavigationProperty Name="Parking_Details" Relationship="Self.FK__Parking_D__Visit__4316F928" FromRole="Guard_Duty" ToRole="Parking_Details" />
         </EntityType>
-        <EntityType Name="House">
+        <EntityType Name="House_Details">
           <Key>
             <PropertyRef Name="House_ID" />
           </Key>
           <Property Name="House_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="House_Size_BHK" Type="Int32" Nullable="false" />
           <Property Name="House_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Guard_Duty" Relationship="Self.FK__Guard_Dut__House__34C8D9D1" FromRole="House" ToRole="Guard_Duty" />
-          <NavigationProperty Name="OwnerRegistrations" Relationship="Self.FK__OwnerRegi__House__276EDEB3" FromRole="House" ToRole="OwnerRegistration" />
+          <NavigationProperty Name="Guard_Duty" Relationship="Self.FK__Guard_Dut__House__38996AB5" FromRole="House_Details" ToRole="Guard_Duty" />
+          <NavigationProperty Name="Owner_Registration" Relationship="Self.FK__Owner_Reg__House__276EDEB3" FromRole="House_Details" ToRole="Owner_Registration" />
         </EntityType>
         <EntityType Name="Nearby_Services">
           <Key>
@@ -406,7 +389,7 @@
           <Property Name="Nearby_Services_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nearby_Services_Distance" Type="Single" Nullable="false" />
           <Property Name="Nearby_Services_Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Nearby_Services_Category" Relationship="Self.FK__Nearby_Se__Nearb__31EC6D26" FromRole="Nearby_Services" ToRole="Nearby_Services_Category" />
+          <NavigationProperty Name="Nearby_Services_Category" Relationship="Self.FK__Nearby_Se__Nearb__35BCFE0A" FromRole="Nearby_Services" ToRole="Nearby_Services_Category" />
         </EntityType>
         <EntityType Name="Nearby_Services_Category">
           <Key>
@@ -414,9 +397,9 @@
           </Key>
           <Property Name="Nearby_Services_Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nearby_Services_Category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Nearby_Services" Relationship="Self.FK__Nearby_Se__Nearb__31EC6D26" FromRole="Nearby_Services_Category" ToRole="Nearby_Services" />
+          <NavigationProperty Name="Nearby_Services" Relationship="Self.FK__Nearby_Se__Nearb__35BCFE0A" FromRole="Nearby_Services_Category" ToRole="Nearby_Services" />
         </EntityType>
-        <EntityType Name="OwnerRegistration">
+        <EntityType Name="Owner_Registration">
           <Key>
             <PropertyRef Name="Owner_ID" />
           </Key>
@@ -432,9 +415,9 @@
           <Property Name="Owner_Contact" Type="Int64" Nullable="false" />
           <Property Name="Owner_Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Owner_NumberOfFamily" Type="Int32" />
-          <NavigationProperty Name="Function_Details" Relationship="Self.FK__Function___Owner__403A8C7D" FromRole="OwnerRegistration" ToRole="Function_Details" />
-          <NavigationProperty Name="House" Relationship="Self.FK__OwnerRegi__House__276EDEB3" FromRole="OwnerRegistration" ToRole="House" />
-          <NavigationProperty Name="Society" Relationship="Self.FK__OwnerRegi__Socie__286302EC" FromRole="OwnerRegistration" ToRole="Society" />
+          <NavigationProperty Name="Function_Details" Relationship="Self.FK__Function___Owner__4F7CD00D" FromRole="Owner_Registration" ToRole="Function_Details" />
+          <NavigationProperty Name="House_Details" Relationship="Self.FK__Owner_Reg__House__276EDEB3" FromRole="Owner_Registration" ToRole="House_Details" />
+          <NavigationProperty Name="Society_Details" Relationship="Self.FK__Owner_Reg__Socie__286302EC" FromRole="Owner_Registration" ToRole="Society_Details" />
         </EntityType>
         <EntityType Name="Parking_Details">
           <Key>
@@ -444,18 +427,17 @@
           <Property Name="Vechile_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Visitor_ID" Type="Int32" />
           <Property Name="Slot_Id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EngagedSlot" Relationship="Self.FK__Parking_D__Slot___5441852A" FromRole="Parking_Details" ToRole="EngagedSlots" />
-          <NavigationProperty Name="Guard_Duty" Relationship="Self.FK__Parking_D__Visit__534D60F1" FromRole="Parking_Details" ToRole="Guard_Duty" />
+          <NavigationProperty Name="Guard_Duty" Relationship="Self.FK__Parking_D__Visit__4316F928" FromRole="Parking_Details" ToRole="Guard_Duty" />
         </EntityType>
-        <EntityType Name="ServiceCategory">
+        <EntityType Name="Service_Category">
           <Key>
             <PropertyRef Name="Service_Category_ID" />
           </Key>
           <Property Name="Service_Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Service_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="User_Service_Details" Relationship="Self.FK__User_Serv__Servi__2D27B809" FromRole="ServiceCategory" ToRole="User_Service_Details" />
+          <Property Name="Service_Category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User_Service_Details" Relationship="Self.FK__User_Serv__Servi__300424B4" FromRole="Service_Category" ToRole="User_Service_Details" />
         </EntityType>
-        <EntityType Name="Society">
+        <EntityType Name="Society_Details">
           <Key>
             <PropertyRef Name="Society_ID" />
           </Key>
@@ -464,7 +446,7 @@
           <Property Name="Society_City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Society_Pincode" Type="Int64" Nullable="false" />
           <Property Name="Society_NoOffHouse" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OwnerRegistrations" Relationship="Self.FK__OwnerRegi__Socie__286302EC" FromRole="Society" ToRole="OwnerRegistration" />
+          <NavigationProperty Name="Owner_Registration" Relationship="Self.FK__Owner_Reg__Socie__286302EC" FromRole="Society_Details" ToRole="Owner_Registration" />
         </EntityType>
         <EntityType Name="User_Service_Details">
           <Key>
@@ -477,21 +459,9 @@
           <Property Name="User_Contact" Type="Int64" Nullable="false" />
           <Property Name="User_Availavility" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="User_Rate" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="ServiceCategory" Relationship="Self.FK__User_Serv__Servi__2D27B809" FromRole="User_Service_Details" ToRole="ServiceCategory" />
+          <NavigationProperty Name="Service_Category" Relationship="Self.FK__User_Serv__Servi__300424B4" FromRole="User_Service_Details" ToRole="Service_Category" />
         </EntityType>
-        <Association Name="FK__Parking_D__Slot___5441852A">
-          <End Role="EngagedSlots" Type="Self.EngagedSlot" Multiplicity="0..1" />
-          <End Role="Parking_Details" Type="Self.Parking_Details" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EngagedSlots">
-              <PropertyRef Name="Slot_ID" />
-            </Principal>
-            <Dependent Role="Parking_Details">
-              <PropertyRef Name="Slot_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Function___Funct__3F466844">
+        <Association Name="FK__Function___Funct__4E88ABD4">
           <End Role="Function_Category" Type="Self.Function_Category" Multiplicity="0..1" />
           <End Role="Function_Details" Type="Self.Function_Details" Multiplicity="*" />
           <ReferentialConstraint>
@@ -503,11 +473,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Function___Owner__403A8C7D">
-          <End Role="OwnerRegistration" Type="Self.OwnerRegistration" Multiplicity="0..1" />
+        <Association Name="FK__Function___Owner__4F7CD00D">
+          <End Role="Owner_Registration" Type="Self.Owner_Registration" Multiplicity="0..1" />
           <End Role="Function_Details" Type="Self.Function_Details" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="OwnerRegistration">
+            <Principal Role="Owner_Registration">
               <PropertyRef Name="Owner_ID" />
             </Principal>
             <Dependent Role="Function_Details">
@@ -515,11 +485,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Guard_Dut__House__34C8D9D1">
-          <End Role="House" Type="Self.House" Multiplicity="0..1" />
+        <Association Name="FK__Guard_Dut__House__38996AB5">
+          <End Role="House_Details" Type="Self.House_Details" Multiplicity="0..1" />
           <End Role="Guard_Duty" Type="Self.Guard_Duty" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="House">
+            <Principal Role="House_Details">
               <PropertyRef Name="House_ID" />
             </Principal>
             <Dependent Role="Guard_Duty">
@@ -527,7 +497,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Parking_D__Visit__534D60F1">
+        <Association Name="FK__Parking_D__Visit__4316F928">
           <End Role="Guard_Duty" Type="Self.Guard_Duty" Multiplicity="0..1" />
           <End Role="Parking_Details" Type="Self.Parking_Details" Multiplicity="*" />
           <ReferentialConstraint>
@@ -539,19 +509,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OwnerRegi__House__276EDEB3">
-          <End Role="House" Type="Self.House" Multiplicity="0..1" />
-          <End Role="OwnerRegistration" Type="Self.OwnerRegistration" Multiplicity="*" />
+        <Association Name="FK__Owner_Reg__House__276EDEB3">
+          <End Role="House_Details" Type="Self.House_Details" Multiplicity="0..1" />
+          <End Role="Owner_Registration" Type="Self.Owner_Registration" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="House">
+            <Principal Role="House_Details">
               <PropertyRef Name="House_ID" />
             </Principal>
-            <Dependent Role="OwnerRegistration">
+            <Dependent Role="Owner_Registration">
               <PropertyRef Name="House_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Nearby_Se__Nearb__31EC6D26">
+        <Association Name="FK__Nearby_Se__Nearb__35BCFE0A">
           <End Role="Nearby_Services_Category" Type="Self.Nearby_Services_Category" Multiplicity="0..1" />
           <End Role="Nearby_Services" Type="Self.Nearby_Services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -563,23 +533,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OwnerRegi__Socie__286302EC">
-          <End Role="Society" Type="Self.Society" Multiplicity="0..1" />
-          <End Role="OwnerRegistration" Type="Self.OwnerRegistration" Multiplicity="*" />
+        <Association Name="FK__Owner_Reg__Socie__286302EC">
+          <End Role="Society_Details" Type="Self.Society_Details" Multiplicity="0..1" />
+          <End Role="Owner_Registration" Type="Self.Owner_Registration" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Society">
+            <Principal Role="Society_Details">
               <PropertyRef Name="Society_ID" />
             </Principal>
-            <Dependent Role="OwnerRegistration">
+            <Dependent Role="Owner_Registration">
               <PropertyRef Name="Society_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User_Serv__Servi__2D27B809">
-          <End Role="ServiceCategory" Type="Self.ServiceCategory" Multiplicity="0..1" />
+        <Association Name="FK__User_Serv__Servi__300424B4">
+          <End Role="Service_Category" Type="Self.Service_Category" Multiplicity="0..1" />
           <End Role="User_Service_Details" Type="Self.User_Service_Details" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ServiceCategory">
+            <Principal Role="Service_Category">
               <PropertyRef Name="Service_Category_ID" />
             </Principal>
             <Dependent Role="User_Service_Details">
@@ -590,53 +560,49 @@
         <EntityContainer Name="ESocietyProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Additional_Facility_Details" EntityType="Self.Additional_Facility_Details" />
           <EntitySet Name="AdminRegistrations" EntityType="Self.AdminRegistration" />
-          <EntitySet Name="AvailableSlots" EntityType="Self.AvailableSlot" />
-          <EntitySet Name="EngagedSlots" EntityType="Self.EngagedSlot" />
+          <EntitySet Name="Available_Slots" EntityType="Self.Available_Slots" />
+          <EntitySet Name="Engaged_Slots" EntityType="Self.Engaged_Slots" />
           <EntitySet Name="Function_Category" EntityType="Self.Function_Category" />
           <EntitySet Name="Function_Details" EntityType="Self.Function_Details" />
           <EntitySet Name="Guard_Duty" EntityType="Self.Guard_Duty" />
-          <EntitySet Name="Houses" EntityType="Self.House" />
+          <EntitySet Name="House_Details" EntityType="Self.House_Details" />
           <EntitySet Name="Nearby_Services" EntityType="Self.Nearby_Services" />
           <EntitySet Name="Nearby_Services_Category" EntityType="Self.Nearby_Services_Category" />
-          <EntitySet Name="OwnerRegistrations" EntityType="Self.OwnerRegistration" />
+          <EntitySet Name="Owner_Registration" EntityType="Self.Owner_Registration" />
           <EntitySet Name="Parking_Details" EntityType="Self.Parking_Details" />
-          <EntitySet Name="ServiceCategories" EntityType="Self.ServiceCategory" />
-          <EntitySet Name="Societies" EntityType="Self.Society" />
+          <EntitySet Name="Service_Category" EntityType="Self.Service_Category" />
+          <EntitySet Name="Society_Details" EntityType="Self.Society_Details" />
           <EntitySet Name="User_Service_Details" EntityType="Self.User_Service_Details" />
-          <AssociationSet Name="FK__Parking_D__Slot___5441852A" Association="Self.FK__Parking_D__Slot___5441852A">
-            <End Role="EngagedSlots" EntitySet="EngagedSlots" />
-            <End Role="Parking_Details" EntitySet="Parking_Details" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Function___Funct__3F466844" Association="Self.FK__Function___Funct__3F466844">
+          <AssociationSet Name="FK__Function___Funct__4E88ABD4" Association="Self.FK__Function___Funct__4E88ABD4">
             <End Role="Function_Category" EntitySet="Function_Category" />
             <End Role="Function_Details" EntitySet="Function_Details" />
           </AssociationSet>
-          <AssociationSet Name="FK__Function___Owner__403A8C7D" Association="Self.FK__Function___Owner__403A8C7D">
-            <End Role="OwnerRegistration" EntitySet="OwnerRegistrations" />
+          <AssociationSet Name="FK__Function___Owner__4F7CD00D" Association="Self.FK__Function___Owner__4F7CD00D">
+            <End Role="Owner_Registration" EntitySet="Owner_Registration" />
             <End Role="Function_Details" EntitySet="Function_Details" />
           </AssociationSet>
-          <AssociationSet Name="FK__Guard_Dut__House__34C8D9D1" Association="Self.FK__Guard_Dut__House__34C8D9D1">
-            <End Role="House" EntitySet="Houses" />
+          <AssociationSet Name="FK__Guard_Dut__House__38996AB5" Association="Self.FK__Guard_Dut__House__38996AB5">
+            <End Role="House_Details" EntitySet="House_Details" />
             <End Role="Guard_Duty" EntitySet="Guard_Duty" />
           </AssociationSet>
-          <AssociationSet Name="FK__Parking_D__Visit__534D60F1" Association="Self.FK__Parking_D__Visit__534D60F1">
+          <AssociationSet Name="FK__Parking_D__Visit__4316F928" Association="Self.FK__Parking_D__Visit__4316F928">
             <End Role="Guard_Duty" EntitySet="Guard_Duty" />
             <End Role="Parking_Details" EntitySet="Parking_Details" />
           </AssociationSet>
-          <AssociationSet Name="FK__OwnerRegi__House__276EDEB3" Association="Self.FK__OwnerRegi__House__276EDEB3">
-            <End Role="House" EntitySet="Houses" />
-            <End Role="OwnerRegistration" EntitySet="OwnerRegistrations" />
+          <AssociationSet Name="FK__Owner_Reg__House__276EDEB3" Association="Self.FK__Owner_Reg__House__276EDEB3">
+            <End Role="House_Details" EntitySet="House_Details" />
+            <End Role="Owner_Registration" EntitySet="Owner_Registration" />
           </AssociationSet>
-          <AssociationSet Name="FK__Nearby_Se__Nearb__31EC6D26" Association="Self.FK__Nearby_Se__Nearb__31EC6D26">
+          <AssociationSet Name="FK__Nearby_Se__Nearb__35BCFE0A" Association="Self.FK__Nearby_Se__Nearb__35BCFE0A">
             <End Role="Nearby_Services_Category" EntitySet="Nearby_Services_Category" />
             <End Role="Nearby_Services" EntitySet="Nearby_Services" />
           </AssociationSet>
-          <AssociationSet Name="FK__OwnerRegi__Socie__286302EC" Association="Self.FK__OwnerRegi__Socie__286302EC">
-            <End Role="Society" EntitySet="Societies" />
-            <End Role="OwnerRegistration" EntitySet="OwnerRegistrations" />
+          <AssociationSet Name="FK__Owner_Reg__Socie__286302EC" Association="Self.FK__Owner_Reg__Socie__286302EC">
+            <End Role="Society_Details" EntitySet="Society_Details" />
+            <End Role="Owner_Registration" EntitySet="Owner_Registration" />
           </AssociationSet>
-          <AssociationSet Name="FK__User_Serv__Servi__2D27B809" Association="Self.FK__User_Serv__Servi__2D27B809">
-            <End Role="ServiceCategory" EntitySet="ServiceCategories" />
+          <AssociationSet Name="FK__User_Serv__Servi__300424B4" Association="Self.FK__User_Serv__Servi__300424B4">
+            <End Role="Service_Category" EntitySet="Service_Category" />
             <End Role="User_Service_Details" EntitySet="User_Service_Details" />
           </AssociationSet>
         </EntityContainer>
@@ -667,16 +633,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AvailableSlots">
-            <EntityTypeMapping TypeName="ESocietyProjectModel.AvailableSlot">
-              <MappingFragment StoreEntitySet="AvailableSlots">
+          <EntitySetMapping Name="Available_Slots">
+            <EntityTypeMapping TypeName="ESocietyProjectModel.Available_Slots">
+              <MappingFragment StoreEntitySet="Available_Slots">
                 <ScalarProperty Name="Slot_ID" ColumnName="Slot_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EngagedSlots">
-            <EntityTypeMapping TypeName="ESocietyProjectModel.EngagedSlot">
-              <MappingFragment StoreEntitySet="EngagedSlots">
+          <EntitySetMapping Name="Engaged_Slots">
+            <EntityTypeMapping TypeName="ESocietyProjectModel.Engaged_Slots">
+              <MappingFragment StoreEntitySet="Engaged_Slots">
                 <ScalarProperty Name="Slot_ID" ColumnName="Slot_ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -716,9 +682,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Houses">
-            <EntityTypeMapping TypeName="ESocietyProjectModel.House">
-              <MappingFragment StoreEntitySet="House">
+          <EntitySetMapping Name="House_Details">
+            <EntityTypeMapping TypeName="ESocietyProjectModel.House_Details">
+              <MappingFragment StoreEntitySet="House_Details">
                 <ScalarProperty Name="House_ID" ColumnName="House_ID" />
                 <ScalarProperty Name="House_Size_BHK" ColumnName="House_Size_BHK" />
                 <ScalarProperty Name="House_Type" ColumnName="House_Type" />
@@ -746,9 +712,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OwnerRegistrations">
-            <EntityTypeMapping TypeName="ESocietyProjectModel.OwnerRegistration">
-              <MappingFragment StoreEntitySet="OwnerRegistration">
+          <EntitySetMapping Name="Owner_Registration">
+            <EntityTypeMapping TypeName="ESocietyProjectModel.Owner_Registration">
+              <MappingFragment StoreEntitySet="Owner_Registration">
                 <ScalarProperty Name="Owner_ID" ColumnName="Owner_ID" />
                 <ScalarProperty Name="Owner_UserName" ColumnName="Owner_UserName" />
                 <ScalarProperty Name="Owner_Password" ColumnName="Owner_Password" />
@@ -774,17 +740,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ServiceCategories">
-            <EntityTypeMapping TypeName="ESocietyProjectModel.ServiceCategory">
-              <MappingFragment StoreEntitySet="ServiceCategory">
+          <EntitySetMapping Name="Service_Category">
+            <EntityTypeMapping TypeName="ESocietyProjectModel.Service_Category">
+              <MappingFragment StoreEntitySet="Service_Category">
                 <ScalarProperty Name="Service_Category_ID" ColumnName="Service_Category_ID" />
-                <ScalarProperty Name="Service_Category" ColumnName="Service_Category" />
+                <ScalarProperty Name="Service_Category1" ColumnName="Service_Category" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Societies">
-            <EntityTypeMapping TypeName="ESocietyProjectModel.Society">
-              <MappingFragment StoreEntitySet="Society">
+          <EntitySetMapping Name="Society_Details">
+            <EntityTypeMapping TypeName="ESocietyProjectModel.Society_Details">
+              <MappingFragment StoreEntitySet="Society_Details">
                 <ScalarProperty Name="Society_ID" ColumnName="Society_ID" />
                 <ScalarProperty Name="Society_Name" ColumnName="Society_Name" />
                 <ScalarProperty Name="Society_City" ColumnName="Society_City" />

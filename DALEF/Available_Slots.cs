@@ -12,15 +12,8 @@ namespace DALEF
     using System;
     using System.Collections.Generic;
     
-    public partial class EngagedSlot
+    public partial class Available_Slots
     {
-        public EngagedSlot()
-        {
-            this.Parking_Details = new HashSet<Parking_Details>();
-        }
-    
         public string Slot_ID { get; set; }
-    
-        public virtual ICollection<Parking_Details> Parking_Details { get; set; }
     }
 }

@@ -98,6 +98,14 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdditionalFacilityDetailsController.cs" />
+    <Compile Include="Controllers\FunctionCategoryController.cs" />
+    <Compile Include="Controllers\FunctionDetailsController.cs" />
+    <Compile Include="Controllers\HouseDetailsController.cs" />
+    <Compile Include="Controllers\OwnerRegistrationController.cs" />
+    <Compile Include="Controllers\ParkingDetailsController.cs" />
+    <Compile Include="Controllers\ServiceCategoryController.cs" />
+    <Compile Include="Controllers\SocietyController.cs" />
+    <Compile Include="Controllers\UserServiceDetailsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

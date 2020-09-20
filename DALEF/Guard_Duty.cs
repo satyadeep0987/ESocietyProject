@@ -27,7 +27,7 @@ namespace DALEF
         public string House_ID { get; set; }
         public Nullable<int> Require { get; set; }
     
-        public virtual House House { get; set; }
+        public virtual House_Details House_Details { get; set; }
         public virtual ICollection<Parking_Details> Parking_Details { get; set; }
     }
 }

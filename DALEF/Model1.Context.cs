@@ -27,18 +27,18 @@ namespace DALEF
     
         public DbSet<Additional_Facility_Details> Additional_Facility_Details { get; set; }
         public DbSet<AdminRegistration> AdminRegistrations { get; set; }
-        public DbSet<AvailableSlot> AvailableSlots { get; set; }
-        public DbSet<EngagedSlot> EngagedSlots { get; set; }
+        public DbSet<Available_Slots> Available_Slots { get; set; }
+        public DbSet<Engaged_Slots> Engaged_Slots { get; set; }
         public DbSet<Function_Category> Function_Category { get; set; }
         public DbSet<Function_Details> Function_Details { get; set; }
         public DbSet<Guard_Duty> Guard_Duty { get; set; }
-        public DbSet<House> Houses { get; set; }
+        public DbSet<House_Details> House_Details { get; set; }
         public DbSet<Nearby_Services> Nearby_Services { get; set; }
         public DbSet<Nearby_Services_Category> Nearby_Services_Category { get; set; }
-        public DbSet<OwnerRegistration> OwnerRegistrations { get; set; }
+        public DbSet<Owner_Registration> Owner_Registration { get; set; }
         public DbSet<Parking_Details> Parking_Details { get; set; }
-        public DbSet<ServiceCategory> ServiceCategories { get; set; }
-        public DbSet<Society> Societies { get; set; }
+        public DbSet<Service_Category> Service_Category { get; set; }
+        public DbSet<Society_Details> Society_Details { get; set; }
         public DbSet<User_Service_Details> User_Service_Details { get; set; }
     }
 }

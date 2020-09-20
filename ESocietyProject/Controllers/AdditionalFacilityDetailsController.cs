@@ -20,5 +20,20 @@ namespace ESocietyProject.Controllers
         {
             return ad.GetAdditionalFacilityDetails();
         }
+        [HttpGet]
+        public AdditionalFacilityDetails Get(int id)
+        {
+            return ad.GetByIdAdditionalFacilityDetails(id);
+        }
+        [HttpPost]
+        public bool Post([FromBody]AdditionalFacilityDetails data)
+        {
+            return ad.PostAdditionalFacilityDetails(data);
+        }
+       [HttpPut]
+       public string Put(int id,AdditionalFacilityDetails data)
+        {
+            return ad.PutAdditionalFacilityDetails(data, id);
+        }
     }
 }

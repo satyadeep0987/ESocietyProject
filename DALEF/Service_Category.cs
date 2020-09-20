@@ -12,19 +12,16 @@ namespace DALEF
     using System;
     using System.Collections.Generic;
     
-    public partial class Society
+    public partial class Service_Category
     {
-        public Society()
+        public Service_Category()
         {
-            this.OwnerRegistrations = new HashSet<OwnerRegistration>();
+            this.User_Service_Details = new HashSet<User_Service_Details>();
         }
     
-        public string Society_ID { get; set; }
-        public string Society_Name { get; set; }
-        public string Society_City { get; set; }
-        public long Society_Pincode { get; set; }
-        public int Society_NoOffHouse { get; set; }
+        public int Service_Category_ID { get; set; }
+        public string Service_Category1 { get; set; }
     
-        public virtual ICollection<OwnerRegistration> OwnerRegistrations { get; set; }
+        public virtual ICollection<User_Service_Details> User_Service_Details { get; set; }
     }
 }

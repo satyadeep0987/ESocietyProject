@@ -24,6 +24,6 @@ namespace DALEF
         public int Function_Status { get; set; }
     
         public virtual Function_Category Function_Category { get; set; }
-        public virtual OwnerRegistration OwnerRegistration { get; set; }
+        public virtual Owner_Registration Owner_Registration { get; set; }
     }
 }

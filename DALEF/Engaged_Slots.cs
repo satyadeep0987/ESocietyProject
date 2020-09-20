@@ -12,19 +12,8 @@ namespace DALEF
     using System;
     using System.Collections.Generic;
     
-    public partial class House
+    public partial class Engaged_Slots
     {
-        public House()
-        {
-            this.Guard_Duty = new HashSet<Guard_Duty>();
-            this.OwnerRegistrations = new HashSet<OwnerRegistration>();
-        }
-    
-        public string House_ID { get; set; }
-        public int House_Size_BHK { get; set; }
-        public string House_Type { get; set; }
-    
-        public virtual ICollection<Guard_Duty> Guard_Duty { get; set; }
-        public virtual ICollection<OwnerRegistration> OwnerRegistrations { get; set; }
+        public string Slot_ID { get; set; }
     }
 }
