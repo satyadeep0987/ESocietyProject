@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6CE4A872-F441-44BC-A33C-0926C1754F8F}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		SQLQuery.sql = SQLQuery.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{80D00F33-866F-4F27-88BE-2FE8214C3812}"
