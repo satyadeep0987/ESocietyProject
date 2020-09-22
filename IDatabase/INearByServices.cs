@@ -9,9 +9,9 @@ namespace IDatabase
 {
     public interface INearByServices
     {
-        IEnumerable<NearbyServices> GetNearByServices();
-        NearbyServices GetByNearByServiceId(int id);
-        bool PostNearByServices(NearbyServices n);
-        string PutNearByServices(int id, NearbyServices n);
+        IEnumerable<NearbyServices> GetServices();
+        NearbyServices GetByServiceId(int id);
+        bool PostServices(NearbyServices n);
+        string PutServices(int id, NearbyServices n);
     }
 }

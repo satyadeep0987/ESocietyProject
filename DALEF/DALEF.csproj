@@ -70,6 +70,7 @@
     <Compile Include="Function_Details.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GuardDutyDALEF.cs" />
     <Compile Include="Guard_Duty.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -92,6 +93,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NearbyServicesCategoryDALEF.cs" />
+    <Compile Include="NearbyServicesDALEF.cs" />
     <Compile Include="Nearby_Services.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

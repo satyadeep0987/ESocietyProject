@@ -100,7 +100,10 @@
     <Compile Include="Controllers\AdditionalFacilityDetailsController.cs" />
     <Compile Include="Controllers\FunctionCategoryController.cs" />
     <Compile Include="Controllers\FunctionDetailsController.cs" />
+    <Compile Include="Controllers\GuardDutyController.cs" />
     <Compile Include="Controllers\HouseDetailsController.cs" />
+    <Compile Include="Controllers\NearbyServicesCategoryController.cs" />
+    <Compile Include="Controllers\NearbyServicesController.cs" />
     <Compile Include="Controllers\OwnerRegistrationController.cs" />
     <Compile Include="Controllers\ParkingDetailsController.cs" />
     <Compile Include="Controllers\ServiceCategoryController.cs" />
