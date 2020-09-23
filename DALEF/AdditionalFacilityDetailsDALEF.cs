@@ -69,14 +69,15 @@ namespace DALEF
             try
             {
                 Additional_Facility_Details a = new Additional_Facility_Details();
-                a.Facility_ID = r.Facility_ID;
+               
                 a.Facility_Name = r.Facility_Name;
                 a.Facility_Contact = r.Facility_Contact;
                 a.Facility_Address = r.Facility_Address;
                 a.Facility_Availability = r.Facility_Availability;
                 a.Facility_Charges = r.Facility_Charges;
-                var res = es.Additional_Facility_Details.Add(a);
-                if(res != null)
+                es.Additional_Facility_Details.Add(a);
+                var res = es.SaveChanges();
+                if(res > 0)
                 {
                     return true;
                 }

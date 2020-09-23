@@ -57,10 +57,11 @@ namespace DALEF
             try
             {
                 Function_Category fn = new Function_Category();
-                fn.Function_Category_ID = r.Function_Category_ID;
+               
                 fn.Function_Category1 = r.Function_Category;
-                var res = es.Function_Category.Add(fn);
-                if(res != null)
+                es.Function_Category.Add(fn);
+                var res = es.SaveChanges();
+                if(res > 0)
                 {
                     return true;
                 }

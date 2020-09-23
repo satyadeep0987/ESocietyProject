@@ -86,8 +86,9 @@ namespace DALEF
                 fs.Function_Duration = r.Function_Duration;
                 fs.Function_Status = r.Function_Status;
 
-                var res = es.Function_Details.Add(fs);
-                if (res != null)
+                es.Function_Details.Add(fs);
+                var res = es.SaveChanges();
+                if (res > 0)
                 {
                     return true;
                 }
