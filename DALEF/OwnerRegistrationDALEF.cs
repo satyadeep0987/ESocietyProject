@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityLayer;
 using IDatabase;
+using System.Web.Security;
+
 namespace DALEF
 {
     public class OwnerRegistrationDALEF : IOwnerRegistration
@@ -86,9 +88,9 @@ namespace DALEF
             try
             {
                 Owner_Registration a = new Owner_Registration();
-                a.Owner_ID = o.Owner_ID;
+             
                 a.Owner_UserName = o.Owner_UserName;
-                a.Owner_Password = o.Owner_Password;
+                a.Owner_Password = Membership.GeneratePassword(8, 2);
                 a.Owener_Email = o.Owener_Email;
                 a.House_ID = o.House_ID;
                 a.Society_ID = o.Society_ID;
@@ -98,8 +100,9 @@ namespace DALEF
                 a.Owner_Contact = o.Owner_Contact;
                 a.Owner_Occupation = o.Owner_Occupation;
                 a.Owner_NumberOfFamily = o.Owner_NumberOfFamily;
-                var res = es.Owner_Registration.Add(a);
-                if (res != null)
+                es.Owner_Registration.Add(a);
+                var res = es.SaveChanges();
+                if (res >0)
                 {
                     return true;
                 }
@@ -122,13 +125,13 @@ namespace DALEF
                 var a = (from ad in es.Owner_Registration
                          where ad.Owner_ID == id
                          select ad).SingleOrDefault();
-                if (o == null)
+                if (a == null)
                 {
                     return "INVALID ID";
                 }
                 else
                 {
-                    a.Owner_ID = o.Owner_ID;
+                 
                     a.Owner_UserName = o.Owner_UserName;
                     a.Owner_Password = o.Owner_Password;
                     a.Owener_Email = o.Owener_Email;
