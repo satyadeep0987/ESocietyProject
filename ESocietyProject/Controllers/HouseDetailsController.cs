@@ -14,8 +14,8 @@ namespace ESocietyManagement.Controllers
     public class HouseDetailsController : ApiController
     {
         HouseDALEF hd = new HouseDALEF();
-        [HttpGet]
 
+        [HttpGet]
         public IEnumerable<House> Get()
         {
             return hd.GetHouse();
@@ -29,12 +29,13 @@ namespace ESocietyManagement.Controllers
         }
 
         [HttpPost]
-        public bool post([FromBody] House he)
+        public bool post(House he)
         {
             return hd.PostHouse(he);
         }
-         [HttpPut]
-         public string put([FromUri] string id, [FromUri] House h)
+
+        [HttpPut]
+         public string put(string id,House h)
         {
             return hd.PutHouse(id,h);
         }

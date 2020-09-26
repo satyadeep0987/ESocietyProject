@@ -26,12 +26,12 @@ namespace ESocietyProject.Controllers
             return ef.GetByIdOwnerRegistration(id);
         }
         [HttpPost]
-        public bool PostOwnerRegistration([FromBody] OwnerRegistration o)
+        public bool PostOwnerRegistration(OwnerRegistration o)
         {
             return ef.PostOwnerRegistration(o);
         }
         [HttpPut]
-        public string PutOwnerRegistration([FromUri] int id, [FromUri] OwnerRegistration o)
+        public string PutOwnerRegistration(int id, OwnerRegistration o)
         {
             return ef.PutOwnerRegistration(id, o);
         }

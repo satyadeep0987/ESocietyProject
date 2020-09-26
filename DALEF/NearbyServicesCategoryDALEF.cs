@@ -75,12 +75,12 @@ namespace DALEF
             {
                 Nearby_Services_Category nsc = new Nearby_Services_Category();
 
-                nsc.Nearby_Services_Category_ID = n.Nearby_Services_Category_ID;
+              
                 nsc.Nearby_Services_Category1 = n.Nearby_Services_Category;
 
-                var res = es.Nearby_Services_Category.Add(nsc);
-
-                if (res != null)
+                es.Nearby_Services_Category.Add(nsc);
+                var res = es.SaveChanges();
+                if (res >0)
                 {
                     return true;
                 }
@@ -109,7 +109,7 @@ namespace DALEF
                 }
                 else
                 {
-                    nsc.Nearby_Services_Category_ID = nc.Nearby_Services_Category_ID;
+                  
                     nsc.Nearby_Services_Category1 = nc.Nearby_Services_Category;
 
                     var res = es.SaveChanges();

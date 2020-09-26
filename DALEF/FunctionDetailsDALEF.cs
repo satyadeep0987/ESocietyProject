@@ -130,7 +130,7 @@ namespace DALEF
                         return "Data Updated";
                     }
                 }
-                return "Error In s=Inserting the data";
+                return "Error In Inserting the data";
             }
             catch(Exception ex)
             {

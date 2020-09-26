@@ -88,9 +88,10 @@ namespace DALEF
             try
             {
                 Owner_Registration a = new Owner_Registration();
-             
+
+                string s = Membership.GeneratePassword(8, 2).ToString();
                 a.Owner_UserName = o.Owner_UserName;
-                a.Owner_Password = Membership.GeneratePassword(8, 2);
+                a.Owner_Password = s;
                 a.Owener_Email = o.Owener_Email;
                 a.House_ID = o.House_ID;
                 a.Society_ID = o.Society_ID;

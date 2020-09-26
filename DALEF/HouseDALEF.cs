@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using EntityLayer;
@@ -63,27 +64,25 @@ namespace DALEF
 
         public bool PostHouse(House h)
         {
-        try
-        {
-            House_Details a = new House_Details();
-            a.House_ID = h.House_ID;
-            a.House_Size_BHK = h.House_Size_BHK;
-            a.House_Type = h.House_Type;
-            var res = es.House_Details.Add(a);
-            if (res != null)
+            try
             {
-                return true;
+                House_Details a = new House_Details();
+                a.House_ID = h.House_ID;
+                a.House_Size_BHK = h.House_Size_BHK;
+                a.House_Type = h.House_Type;
+                   es.House_Details.Add(a);
+                    var res = es.SaveChanges();
+                if (res > 0)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
-
-
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
-        catch (Exception ex)
-        {
-            throw ex;
-        }
-    }
 
 
         public string PutHouse(string id, House h)
@@ -91,10 +90,10 @@ namespace DALEF
             try
             {
 
-                var a = (from ad in es.House_Details
-                         where ad.House_ID == id
-                         select ad).SingleOrDefault();
-                if (h == null)
+                var a = (from hs in es.House_Details
+                         where hs.House_ID == id
+                         select hs).SingleOrDefault();
+                if (a == null)
                 {
                     return "Invalid Id";
                 }

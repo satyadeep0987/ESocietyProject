@@ -74,8 +74,9 @@ namespace DALEF
                 sd.Society_City = s.Society_City;
                 sd.Society_Pincode = s.Society_Pincode;
                 sd.Society_NoOffHouse = s.Society_NoOffHouse;
-                var res = es.Society_Details.Add(sd);
-                if(res!=null)
+                 es.Society_Details.Add(sd);
+                var res = es.SaveChanges();
+                if (res>0)
                 {
                     return true;
                 }
@@ -94,7 +95,7 @@ namespace DALEF
             try
             {
                 var a = (from sd in es.Society_Details where sd.Society_ID == id select sd).SingleOrDefault();
-                if(s==null)
+                if(a==null)
                 {
                     return "Invalid id";
                 }
