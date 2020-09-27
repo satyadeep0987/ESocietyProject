@@ -31,7 +31,7 @@ namespace ESocietyManagement.Controllers
             return ef.PostParking(pd);
         }
         [HttpPut]
-        public string Put(int id,ParkingDetails pd)
+        public string Put(int id, [FromBody] ParkingDetails pd)
         {
             return ef.PutParking(id, pd);
         }

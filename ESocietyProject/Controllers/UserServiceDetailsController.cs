@@ -30,7 +30,7 @@ namespace ESocietyProject.Controllers
             return us.PostUserServiceDetails(u);
         }
         [HttpPut]
-        public string put(int id,UserServiceDetails u)
+        public string put(int id, [FromBody]UserServiceDetails u)
         {
             return us.PutUserServiceDetails(id, u);
         }

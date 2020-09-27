@@ -57,8 +57,9 @@ namespace DALEF
                 u.User_Contact = r.User_Contact;
                 u.User_Availavility = r.User_Availability;
                 u.User_Rate = r.User_Rate;
-                var res = es.User_Service_Details.Add(u);
-                if(res != null)
+                es.User_Service_Details.Add(u);
+                var res = es.SaveChanges();
+                if (res > 0)
                 {
                     return true;
                 }
@@ -94,7 +95,7 @@ namespace DALEF
                     var res = es.SaveChanges();
                     if(res>0)
                     {
-                        return "data Inserted";
+                        return "Data Updated";
                     }
                     return "Error In Inserting Data";
                 }

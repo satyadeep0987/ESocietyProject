@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="IAdditionalFacilityDetails.cs" />
+    <Compile Include="IAvailableSlots.cs" />
     <Compile Include="IFunctionCategory.cs" />
     <Compile Include="IFunctionDetails.cs" />
     <Compile Include="IGuardDuty.cs" />

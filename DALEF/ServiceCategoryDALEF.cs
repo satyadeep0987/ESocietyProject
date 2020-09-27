@@ -64,10 +64,11 @@ namespace DALEF
             try
             {
                 Service_Category a = new Service_Category();
-                a.Service_Category_ID = s.Service_Category_ID;
+                
                 a.Service_Category1 = s.Service_Category;
-                var res = es.Service_Category.Add(a);
-                if (res != null)
+                es.Service_Category.Add(a);
+                var res = es.SaveChanges();
+                if (res > 0)
                 {
                     return true;
                 }

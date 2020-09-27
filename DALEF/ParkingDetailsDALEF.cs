@@ -22,7 +22,7 @@ namespace DALEF
                     p.Parking_ID = r.Parking_ID;
                     p.Vechile_Number = r.Vechile_Number;
                     p.Visitor_ID = (int)r.Visitor_ID;
-
+                    p.Parking_Slot = r.Slot_Id;
                 }
                 else
                 {
@@ -36,9 +36,32 @@ namespace DALEF
             }
         }
 
-        public string PutParking(int id, ParkingDetails pd)
+        public string PutParking(int id, ParkingDetails p)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var a = (from pd in es.Parking_Details where pd.Parking_ID == id select pd).SingleOrDefault();
+                if (a == null)
+                {
+                    return "Invalid id";
+                }
+                else
+                {
+                    a.Vechile_Number = p.Vechile_Number;
+                    a.Visitor_ID = p.Visitor_ID;
+
+                    var res = es.SaveChanges();
+                    if (res > 0)
+                    {
+                        return "Data Updated";
+                    }
+                }
+                return "Error in data Updating";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public IEnumerable<ParkingDetails> GetParking()
@@ -46,18 +69,18 @@ namespace DALEF
             try
             {
                 var res = es.Parking_Details.ToList();
-                List<Parking_Details> pd = new List<Parking_Details>();
+                List<ParkingDetails> pd = new List<ParkingDetails>();
                 foreach (var r in res)
                 {
-                    Parking_Details p = new Parking_Details();
+                    ParkingDetails p = new ParkingDetails();
                     p.Parking_ID = r.Parking_ID;
                     p.Vechile_Number = r.Vechile_Number;
-                    p.Visitor_ID = r.Visitor_ID;
-                    p.Slot_Id = r.Slot_Id;
+                    p.Visitor_ID = (int)r.Visitor_ID;
+                    p.Parking_Slot = r.Slot_Id;
 
                     pd.Add(p);
                 }
-                return (IEnumerable<ParkingDetails>)pd;
+                return pd;
             }
             catch (Exception ex)
             {
@@ -70,11 +93,13 @@ namespace DALEF
             try
             {
                 Parking_Details pd = new Parking_Details();
-                pd.Parking_ID = p.Parking_ID;
+                
                 pd.Vechile_Number = p.Vechile_Number;
                 pd.Visitor_ID = p.Visitor_ID;
-                var res = es.Parking_Details.Add(pd);
-                if (res != null)
+                pd.Slot_Id = p.Parking_Slot;
+                es.Parking_Details.Add(pd);
+                var res = es.SaveChanges();
+                if (res >0)
                 {
                     return true;
                 }
@@ -86,33 +111,7 @@ namespace DALEF
             }
         }
            
-        public string PutParking(ParkingDetails p, int id)
-        {
-                try
-                {
-                    var a = (from pd in es.Parking_Details where pd.Parking_ID == id select pd).SingleOrDefault();
-                    if (p == null)
-                    {
-                        return "Invalid id";
-                    }
-                    else
-                    {
-                        a.Vechile_Number = p.Vechile_Number;
-                        a.Visitor_ID = p.Visitor_ID;
-
-                        var res = es.SaveChanges();
-                        if (res > 0)
-                        {
-                            return "Data Updated";
-                        }
-                    }
-                    return "Error in data Updating";
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
+        
 
         }
     }

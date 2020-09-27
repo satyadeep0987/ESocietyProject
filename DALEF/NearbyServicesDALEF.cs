@@ -86,9 +86,9 @@ namespace DALEF
                 n.Nearby_Services_Distance = (float)ns.Nearby_Services_Distance;
                 n.Nearby_Services_Details = ns.Nearby_Services_Details;
 
-                var res = es.Nearby_Services.Add(n);
-
-                if (res != null)
+                 es.Nearby_Services.Add(n);
+                var res = es.SaveChanges();
+                if (res >0)
                 {
                     return true;
                 }

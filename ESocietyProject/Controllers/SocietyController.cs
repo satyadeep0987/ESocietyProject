@@ -27,12 +27,12 @@ namespace ESocietyProject.Controllers
             return ef.GetByIdSociety(id);
         }
         [HttpPost]
-        public bool Post(Society sd)
+        public bool Post([FromBody]Society sd)
         {
             return ef.PostSociety(sd);
         }
         [HttpPut]
-        public string Put(string id,Society sd)
+        public string Put(string id,[FromBody] Society sd)
         {
             return ef.PutSociety(id, sd);
         }

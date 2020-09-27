@@ -81,7 +81,7 @@ namespace DALEF
             {
                 Guard_Duty gd = new Guard_Duty();
 
-                gd.Visitor_ID = g.Visitor_ID;
+              
                 gd.Visitor_Name = g.Visitor_Name;
                 gd.In_Datetime = g.In_Datetime;
                 gd.Out_Datetime = g.Out_Datetime;
@@ -89,9 +89,10 @@ namespace DALEF
                 gd.House_ID = g.House_ID;
                 gd.Require = g.Require;
 
-                var res = es.Guard_Duty.Add(gd);
+                es.Guard_Duty.Add(gd);
+                var res = es.SaveChanges();
 
-                if (res != null)
+                if (res > 0)
                 {
                     return true;
                 }
@@ -117,7 +118,7 @@ namespace DALEF
                 }
                 else
                 {
-                    gd.Visitor_ID = g.Visitor_ID;
+                   
                     gd.Visitor_Name = g.Visitor_Name;
                     gd.In_Datetime = g.In_Datetime;
                     gd.Out_Datetime = g.Out_Datetime;

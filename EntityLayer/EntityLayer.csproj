@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AdditionalFacilityDetails.cs" />
     <Compile Include="AdminRegistration.cs" />
+    <Compile Include="AvailableSlots.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FunctionCategory.cs" />
     <Compile Include="FunctionDetails.cs" />

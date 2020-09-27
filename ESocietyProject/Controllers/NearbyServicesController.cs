@@ -31,7 +31,7 @@ namespace ESocietyWebAPI.Controllers
             return ns.PostServices(n);
         }
 
-        public string Put([FromBody] NearbyServices n, int id)
+        public string Put(int id, [FromBody] NearbyServices n)
         {
             return ns.PutServices(id, n);
         }

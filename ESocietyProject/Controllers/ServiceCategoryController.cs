@@ -33,7 +33,7 @@ namespace ESocietyManagement.Controllers
             return ad.PostServiceCategory(s);
         }
         [HttpPut]
-        public string put([FromUri] ServiceCategory s, [FromUri] int id)
+        public string put(int id, [FromBody] ServiceCategory s)
         {
             return ad.putServiceCategory(id,s);
         }
