@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdditionalFacilityDetailsController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\AvailableSlotsController.cs" />
     <Compile Include="Controllers\FunctionCategoryController.cs" />
     <Compile Include="Controllers\FunctionDetailsController.cs" />
