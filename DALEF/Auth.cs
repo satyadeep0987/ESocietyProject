@@ -31,7 +31,7 @@ namespace DALEF
             data d = new data();
             try
             {
-                if (string.Equals(i.type,"Admin"))
+                if (string.Equals(i.type,"Admin"))//i.type == "Admin"
                 {
                     var res = es.AdminRegistrations.Where(x => x.Admin_Name == i.uname && x.Admin_Password == i.pass).SingleOrDefault();
                     if(res == null)
