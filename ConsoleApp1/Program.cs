@@ -22,7 +22,11 @@ namespace ConsoleApp1
             Console.WriteLine(d.id);
             Console.WriteLine(d.msg);
             Console.WriteLine(d.username);
-        }
+           
+
+
+            
+    }
     }
 
     public class data
